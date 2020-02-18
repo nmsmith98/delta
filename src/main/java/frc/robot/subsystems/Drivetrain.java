@@ -46,9 +46,9 @@ public Drivetrain () {
     setDefaultCommand(new DriveArcade());
   }
 public void arcadeDrive(double moveSpeed, double rotateSpeed) {
-  differentialDrive.arcadeDrive(moveSpeed, rotateSpeed);
-  System.out.println(moveSpeed);
-  System.out.println(rotateSpeed);
+  differentialDrive.arcadeDrive(moveSpeed - 0.1, rotateSpeed + 0.2);
+  //System.out.println(moveSpeed);
+  //System.out.println(rotateSpeed);
 }
 
 }

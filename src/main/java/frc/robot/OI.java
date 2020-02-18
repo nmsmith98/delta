@@ -7,6 +7,10 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+//import frc.robot.commands.DriveArcade;
+import frc.robot.commands.TestCommand;
 import edu.wpi.first.wpilibj.Joystick;
 
 /**
@@ -19,9 +23,14 @@ public class OI {
   // One type of button is a joystick button which is any button on a
   //// joystick.
   // You create one by telling it which joystick it's on and which button
-  // number it is.
-  // Joystick stick = new Joystick(port);
-  // Button button = new JoystickButton(stick, buttonNumber);
+  // number it is. 
+  Joystick Joystick1 = new Joystick(0);
+  Button ButtonA = new JoystickButton(this.Joystick1, 9);
+
+  public OI() {
+    ButtonA.whenPressed(new TestCommand());
+  }
+
 
   // There are a few additional built in buttons you can use. Additionally,
   // by subclassing Button you can create custom triggers and bind those to
