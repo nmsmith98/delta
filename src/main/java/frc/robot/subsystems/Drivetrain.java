@@ -24,6 +24,7 @@ PWMVictorSPX leftFrontPWMVictorSPX = null;
 PWMVictorSPX leftBackPWMVictorSPX = null;
 PWMVictorSPX rightFrontPWMVictorSPX = null;
 PWMVictorSPX rightBackPWMVictorSPX = null;
+PWMVictorSPX intakePWMVictorSPX = null;
 
 DifferentialDrive differentialDrive = null;
 public Drivetrain () {
@@ -32,6 +33,7 @@ public Drivetrain () {
   leftBackPWMVictorSPX = new PWMVictorSPX(RobotMap.DRIVETRAIN_LEFT_BACK_PWMVictorSPX);
   rightFrontPWMVictorSPX = new PWMVictorSPX(RobotMap.DRIVETRAIN_RIGHT_FRONT_PWMVictorSPX);
   rightBackPWMVictorSPX = new PWMVictorSPX(RobotMap.DRIVETRAIN_RIGHT_BACK_PWMVictorSPX);
+  intakePWMVictorSPX = new PWMVictorSPX(RobotMap.INTAKE_PWMVictorSPX);
 
   SpeedControllerGroup leftMotors = new SpeedControllerGroup(leftFrontPWMVictorSPX, leftBackPWMVictorSPX);
   SpeedControllerGroup rightMotors = new SpeedControllerGroup(rightFrontPWMVictorSPX, rightBackPWMVictorSPX);
