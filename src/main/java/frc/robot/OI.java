@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 //import frc.robot.commands.DriveArcade;
 import frc.robot.commands.TestCommand;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -25,10 +26,11 @@ public class OI {
   // You create one by telling it which joystick it's on and which button
   // number it is. 
   Joystick Joystick1 = new Joystick(0);
-  Button ButtonA = new JoystickButton(this.Joystick1, 9);
+  XboxController Controller1 = new XboxController(0); // Creates an XboxController on port 0.
+  Button ButtonX = new JoystickButton(this.Controller1, XboxController.Button.kX.value);
 
   public OI() {
-    ButtonA.whenPressed(new TestCommand());
+    ButtonX.whenPressed(new TestCommand());
   }
 
 
