@@ -7,6 +7,10 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -28,6 +32,14 @@ public class Robot extends TimedRobot {
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
+  PWMVictorSPX leftFrontPWMVictorSPX = null;
+  PWMVictorSPX leftBackPWMVictorSPX = null;
+  PWMVictorSPX rightFrontPWMVictorSPX = null;
+  PWMVictorSPX rightBackPWMVictorSPX = null;
+  PWMVictorSPX intakePWMVictorSPX = null;
+
+  DifferentialDrive differentialDrive = null;
+  
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -83,6 +95,17 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     m_autonomousCommand = m_chooser.getSelected();
 
+    leftFrontPWMVictorSPX = new PWMVictorSPX(RobotMap.DRIVETRAIN_LEFT_FRONT_PWMVictorSPX);
+    leftBackPWMVictorSPX = new PWMVictorSPX(RobotMap.DRIVETRAIN_LEFT_BACK_PWMVictorSPX);
+    rightFrontPWMVictorSPX = new PWMVictorSPX(RobotMap.DRIVETRAIN_RIGHT_FRONT_PWMVictorSPX);
+    rightBackPWMVictorSPX = new PWMVictorSPX(RobotMap.DRIVETRAIN_RIGHT_BACK_PWMVictorSPX);
+    intakePWMVictorSPX = new PWMVictorSPX(RobotMap.INTAKE_PWMVictorSPX);
+
+    SpeedControllerGroup leftMotors = new SpeedControllerGroup(leftFrontPWMVictorSPX, leftBackPWMVictorSPX);
+    SpeedControllerGroup rightMotors = new SpeedControllerGroup(rightFrontPWMVictorSPX, rightBackPWMVictorSPX);
+    
+    differentialDrive = new DifferentialDrive(leftMotors, rightMotors);
+
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
      * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -93,6 +116,16 @@ public class Robot extends TimedRobot {
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.start();
+
+      Robot.m_drivetrain.arcadeDrive(1, 0);
+      
+      try {
+        Thread.sleep(2000);
+      } catch(InterruptedException e) {
+        System.out.print("bruh something broke");
+      }
+      
+      Robot.m_drivetrain.arcadeDrive(0, 0);
     }
   }
 
@@ -110,6 +143,7 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
+    
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
