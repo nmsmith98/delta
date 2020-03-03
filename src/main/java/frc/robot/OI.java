@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 //import frc.robot.commands.DriveArcade;
+import frc.robot.commands.ToggleIntake;
 import frc.robot.commands.TestCommand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -26,11 +27,17 @@ public class OI {
   // You create one by telling it which joystick it's on and which button
   // number it is. 
   Joystick Joystick1 = new Joystick(0);
+
   XboxController Controller1 = new XboxController(0); // Creates an XboxController on port 0.
+  XboxController Controller2 = new XboxController(1);
+
   Button ButtonX = new JoystickButton(this.Controller1, XboxController.Button.kX.value);
+  Button ButtonA =  new JoystickButton(this.Controller2, XboxController.Button.kX.value);
 
   public OI() {
     ButtonX.whenPressed(new TestCommand());
+  
+    ButtonA.whileHeld(new ToggleIntake());
   }
 
 

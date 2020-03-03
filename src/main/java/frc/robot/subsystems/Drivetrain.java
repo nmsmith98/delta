@@ -47,10 +47,10 @@ public Drivetrain () {
     // setDefaultCommand(new MySpecialCommand()); public void initDefaultCommand() {
     setDefaultCommand(new DriveArcade());
   }
-public void arcadeDrive(double moveSpeed, double rotateSpeed) {
-  differentialDrive.arcadeDrive(moveSpeed - 0.1, rotateSpeed + 0.2);
-  //System.out.println(moveSpeed);
-  //System.out.println(rotateSpeed);
-}
+  public void arcadeDrive(double moveSpeed, double rotateSpeed) {
+    differentialDrive.arcadeDrive(moveSpeed - 0.1, rotateSpeed + 0.2);
+    //System.out.println(moveSpeed);
+    //System.out.println(rotateSpeed);
+  }
 
 }
