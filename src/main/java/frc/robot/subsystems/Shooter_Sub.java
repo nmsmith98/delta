@@ -16,5 +16,6 @@ public class Shooter_Sub extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
+    
   }
 }

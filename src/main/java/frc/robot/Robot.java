@@ -120,7 +120,7 @@ public class Robot extends TimedRobot {
       Robot.m_drivetrain.arcadeDrive(1, 0);
       
       try {
-        Thread.sleep(2000);
+        Thread.sleep(2050);
       } catch(InterruptedException e) {
         System.out.print("bruh something broke");
       }
