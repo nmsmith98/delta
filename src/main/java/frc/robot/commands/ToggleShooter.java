@@ -7,14 +7,14 @@ import frc.robot.RobotMap;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class ToggleIntake extends Command {
+public class ToggleShooter extends Command {
   /**
    * Creates a new Intake.
    */
   public boolean IntakeMotorEnabled = false;
   PWMVictorSPX IntakeMotor = new PWMVictorSPX(RobotMap.INTAKE_PWMVictorSPX);
   
-  public void toggleIntake() {
+  public void toggleShooter() {
     if (IntakeMotorEnabled == false) {
       IntakeMotorEnabled = true;
       IntakeMotor.set(0.3);
@@ -32,7 +32,7 @@ public class ToggleIntake extends Command {
 
   @Override
   public void execute() {
-    toggleIntake();
+    toggleShooter();
     end();
   }
 

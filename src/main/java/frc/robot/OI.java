@@ -10,7 +10,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 //import frc.robot.commands.DriveArcade;
+import frc.robot.commands.ToggleDelivery;
 import frc.robot.commands.ToggleIntake;
+import frc.robot.commands.ToggleShooter;
 import frc.robot.commands.TestCommand;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -32,12 +34,17 @@ public class OI {
   XboxController Controller2 = new XboxController(1);
 
   Button ButtonX = new JoystickButton(this.Controller1, XboxController.Button.kX.value);
-  Button ButtonA =  new JoystickButton(this.Controller2, XboxController.Button.kX.value);
-
+  Button ButtonA =  new JoystickButton(this.Controller2, XboxController.Button.kA.value);
+  Button ButtonY = new JoystickButton(this.Controller2, XboxController.Button.kY.value);
+  Button ButtonB = new JoystickButton(this.Controller2, XboxController.Button.kB.value);
   public OI() {
     ButtonX.whenPressed(new TestCommand());
   
     ButtonA.whileHeld(new ToggleIntake());
+
+    ButtonY.whileHeld(new ToggleDelivery());
+
+    ButtonB.whileHeld(new ToggleShooter());
   }
 
 

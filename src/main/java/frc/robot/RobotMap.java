@@ -26,6 +26,8 @@ public class RobotMap {
 	public static final int DRIVETRAIN_RIGHT_FRONT_PWMVictorSPX = 2;
   public static final int DRIVETRAIN_RIGHT_BACK_PWMVictorSPX = 3;
   public static final int INTAKE_PWMVictorSPX = 5;
+  public static final int DELIVERY_PWMVictorSPX = 6;
+  public static final int SHOOTER_PWMVictorSPX = 7;
   
   //Joystick
   public static final int OI_DRIVER_CONTROLLER = 0;

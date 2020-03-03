@@ -1,3 +1,10 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -7,14 +14,11 @@ import frc.robot.RobotMap;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class ToggleIntake extends Command {
-  /**
-   * Creates a new Intake.
-   */
+public class ToggleDelivery extends Command {
+
   public boolean IntakeMotorEnabled = false;
-  PWMVictorSPX IntakeMotor = new PWMVictorSPX(RobotMap.INTAKE_PWMVictorSPX);
-  
-  public void toggleIntake() {
+  PWMVictorSPX IntakeMotor = new PWMVictorSPX(RobotMap.DELIVERY_PWMVictorSPX);
+  public void toggleDelivery() {
     if (IntakeMotorEnabled == false) {
       IntakeMotorEnabled = true;
       IntakeMotor.set(0.3);
@@ -24,15 +28,16 @@ public class ToggleIntake extends Command {
       IntakeMotor.set(0);
     }
   }
-  
-  @Override
+
+
+@Override
   protected void initialize() {
     
   }
 
   @Override
   public void execute() {
-    toggleIntake();
+    toggleDelivery();
     end();
   }
 
